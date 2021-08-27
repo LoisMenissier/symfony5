@@ -45,6 +45,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $enabled;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $last_login;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $nom;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $prenom;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -149,6 +164,42 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setEnabled(bool $enabled): self
     {
         $this->enabled = $enabled;
+
+        return $this;
+    }
+
+    public function getLastLogin(): ?\DateTimeInterface
+    {
+        return $this->last_login;
+    }
+
+    public function setLastLogin(?\DateTimeInterface $last_login): self
+    {
+        $this->last_login = $last_login;
+
+        return $this;
+    }
+
+    public function getNom(): ?string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(?string $nom): self
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    public function getPrenom(): ?string
+    {
+        return $this->prenom;
+    }
+
+    public function setPrenom(?string $prenom): self
+    {
+        $this->prenom = $prenom;
 
         return $this;
     }
